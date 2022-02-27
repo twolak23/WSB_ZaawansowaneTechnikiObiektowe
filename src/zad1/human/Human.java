@@ -1,12 +1,15 @@
 package zad1.human;
+
 import zad1.*;
-import zad1.animal.Animal;
+import zad1.animal.*;
+
+import java.util.*;
 
 public class Human {
     private Double salary;
     private Animal pet;
     private Car car;
-
+    private List<HumanSalaryHistory> salaryHistoryDisplayList = new ArrayList<>();
     public Human(Double salary) {
         this.salary = salary;
     }
@@ -17,8 +20,10 @@ public class Human {
     }
 
     public Double getSalary() {
+        salaryHistoryDisplayList.add(new HumanSalaryHistory(new Date(), salary));
         return salary;
     }
+
     public void setSalary(Double salary) {
         if(salary < 0) {
             System.out.println("Nowa kwota wynagrodzenia jest ujemna");
@@ -30,6 +35,7 @@ public class Human {
         }
     }
 
+    // region getters & setters
     public Animal getPet() {
         return pet;
     }
@@ -45,4 +51,18 @@ public class Human {
     public void setCar(Car car) {
         this.car = car;
     }
+
+    public String getSalaryHistoryDisplayList() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Historia pobrania danych o wypłacie: \n");
+        int i = 1;
+        for (HumanSalaryHistory history : salaryHistoryDisplayList) {
+            builder.append(i).append(". ");
+            builder.append(history);
+            i++;
+        }
+        return builder.toString();
+    }
+
+    //endregion
 }
