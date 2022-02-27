@@ -17,11 +17,15 @@ public class Main {
 
         // zad1
         Animal animal = new Animal("ptak");
+        human1.setPet(animal);
         animal.feed(12.6);
         animal.feed(12.0);
         animal.takeForAWalk(150.0);
         animal.takeForAWalk(13.0);
         animal.takeForAWalk(10000.0);
+        // zad2
+        human1.setCar(car);
+
 
     }
 }

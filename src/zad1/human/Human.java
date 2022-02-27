@@ -1,9 +1,11 @@
 package zad1.human;
+import zad1.*;
 import zad1.animal.Animal;
 
 public class Human {
     private Double salary;
     private Animal pet;
+    private Car car;
 
     public Human(Double salary) {
         this.salary = salary;
@@ -26,5 +28,21 @@ public class Human {
             System.out.println("ZUS i US zostali poinformowani zmianie kwoty");
             this.salary = salary;
         }
+    }
+
+    public Animal getPet() {
+        return pet;
+    }
+
+    public void setPet(Animal pet) {
+        this.pet = pet;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

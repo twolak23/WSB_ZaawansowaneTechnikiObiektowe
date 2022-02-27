@@ -2,19 +2,19 @@ package zad1.device;
 
 
 public abstract class Device {
-    private String producer;
-    private String mode;
+    private final String producer;
+    private final String model;
     private int yearOfProduction;
 
-    public Device(String producer, String mode, int yearOfProduction) {
+    public Device(String producer, String model, int yearOfProduction) {
         this.producer = producer;
-        this.mode = mode;
+        this.model = model;
         this.yearOfProduction = yearOfProduction;
     }
 
     @Override
     public String toString() {
-        return producer + ", " + mode + ", year " + yearOfProduction;
+        return producer + ", " + model + ", year " + yearOfProduction;
     }
 
     public abstract void turnOn();
@@ -23,16 +23,8 @@ public abstract class Device {
         return producer;
     }
 
-    public void setProducer(String producer) {
-        this.producer = producer;
-    }
-
-    public String getMode() {
-        return mode;
-    }
-
-    public void setMode(String mode) {
-        this.mode = mode;
+    public String getModel() {
+        return model;
     }
 
     public int getYearOfProduction() {
