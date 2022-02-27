@@ -49,7 +49,17 @@ public class Human {
     }
 
     public void setCar(Car car) {
-        this.car = car;
+        if(car.getPrice() < salary) {
+            System.out.println("Udało sie kupic za gotówkę");
+            this.car = car;
+        }
+        else if (car.getPrice() > (salary / 12)) {
+            System.out.println("Udało się kupić, ale na kredyt");
+            this.car = car;
+        }
+        else {
+            System.out.println("Sorry, nie stać cię :)");
+        }
     }
 
     public String getSalaryHistoryDisplayList() {
