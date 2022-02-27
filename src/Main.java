@@ -73,6 +73,7 @@ public class Main {
         System.out.println("car1 == car2 (hashCode)" + (car1.hashCode() == car2.hashCode()));
         System.out.println(car1);
         System.out.println(car2);
+        // zad 7 - w sumie zostało tez zrobione :)
 
     }
 }
