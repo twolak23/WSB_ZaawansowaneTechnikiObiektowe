@@ -50,4 +50,12 @@ public class Animal {
 		}
 		this.walkCount++;
 	}
+
+	@Override
+	public String toString () {
+		return "Species: " + species + '\'' +
+					   ", Weight: " + weight +
+					   ", Times feeded: " + feedCount +
+					   ", Times on a walk: " + walkCount;
+	}
 }

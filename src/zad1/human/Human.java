@@ -2,6 +2,7 @@ package zad1.human;
 
 import zad1.*;
 import zad1.animal.*;
+import zad1.devices.*;
 
 import java.util.*;
 
@@ -10,6 +11,9 @@ public class Human {
     private Animal pet;
     private Car car;
     private List<HumanSalaryHistory> salaryHistoryDisplayList = new ArrayList<>();
+
+    public Human() { }
+
     public Human(Double salary) {
         this.salary = salary;
     }
@@ -35,7 +39,16 @@ public class Human {
         }
     }
 
-    // region getters & setters
+	@Override
+	public String toString () {
+		return "Human{" +
+					   "Wypłata: " + salary +
+					   ", Zwierzak: " + (pet == null ? "Brak" : pet) +
+					   ", Samochód: " + (car == null ? "Brak" : car) +
+					   '}';
+	}
+
+	// region getters & setters
     public Animal getPet() {
         return pet;
     }
@@ -49,16 +62,18 @@ public class Human {
     }
 
     public void setCar(Car car) {
-        if(car.getPrice() < salary) {
-            System.out.println("Udało sie kupic za gotówkę");
-            this.car = car;
-        }
-        else if (car.getPrice() > (salary / 12)) {
-            System.out.println("Udało się kupić, ale na kredyt");
-            this.car = car;
-        }
-        else {
-            System.out.println("Sorry, nie stać cię :)");
+        if(car != null) {
+	        if(car.getPrice() < salary) {
+        	    System.out.println("Udało sie kupic za gotówkę");
+    	        this.car = car;
+	        }
+        	else if (car.getPrice() > (salary / 12)) {
+    	        System.out.println("Udało się kupić, ale na kredyt");
+	            this.car = car;
+        	}
+        	else {
+            	System.out.println("Sorry, nie stać cię :)");
+        	}
         }
     }
 

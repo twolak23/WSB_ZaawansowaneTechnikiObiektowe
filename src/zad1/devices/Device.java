@@ -1,10 +1,10 @@
-package zad1.device;
+package zad1.devices;
 
 
 public abstract class Device {
-    private final String producer;
-    private final String model;
-    private int yearOfProduction;
+    protected final String producer;
+	protected final String model;
+	protected int yearOfProduction;
 
     public Device(String producer, String model, int yearOfProduction) {
         this.producer = producer;
@@ -14,7 +14,7 @@ public abstract class Device {
 
     @Override
     public String toString() {
-        return producer + ", " + model + ", year " + yearOfProduction;
+        return producer + " " + model + ", year " + yearOfProduction;
     }
 
     public abstract void turnOn();
