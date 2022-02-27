@@ -13,7 +13,6 @@ public class Main {
 
         Human human1 = new Human(3000.00);
         System.out.println(human1.getSalary());
-        human1.setSalary(2000.00);
 
         // zad1
         Animal animal = new Animal("ptak");
@@ -25,7 +24,7 @@ public class Main {
         animal.takeForAWalk(10000.0);
         // zad2
         human1.setCar(car);
-
+        System.out.println(human1.getCar());
 
     }
 }
