@@ -15,8 +15,7 @@ public class Main {
         Human human1 = new Human(3000.00);
 
         // zad1
-		System.out.println();
-		System.out.println("Zad 1");
+		System.out.println("\nZad 1");
 
 		Animal animal = new Animal("ptak");
         human1.setPet(animal);
@@ -28,16 +27,14 @@ public class Main {
         System.out.println();
 
         // zad2
-		System.out.println();
-		System.out.println("Zad2");
+		System.out.println("\nZad2");
 
 		car.setPrice(10000.0);
         human1.setCar(car);
         System.out.println(human1.getCar());
         System.out.println();
         // zad3&4
-		System.out.println();
-		System.out.println("Zad 3&4");
+		System.out.println("\nZad 3&4");
 
 		human1.setSalary(2000.00);
         System.out.println(human1.getSalary());
@@ -49,8 +46,7 @@ public class Main {
 		System.out.println();
 
 		// zad 5
-		System.out.println();
-		System.out.println("Zad 5");
+		System.out.println("\nZad 5");
 
         Car car1 = new Car("BMW", "Z4", 2016, 5000.0);
 
@@ -65,15 +61,36 @@ public class Main {
         human.setCar(car1);
 
         //zad 6
-		System.out.println();
-		System.out.println("Zad 6");
+		System.out.println("\nZad 6");
 
 		Car car2 = new Car("BMW", "Z4", 2016, 5000.0);
         System.out.println("car1 == car2 (equals): " + car1.equals(car2));
         System.out.println("car1 == car2 (hashCode)" + (car1.hashCode() == car2.hashCode()));
         System.out.println(car1);
         System.out.println(car2);
-        // zad 7 - w sumie zostało tez zrobione :)
+    	// zad 7 - w sumie zostało tez zrobione :)
+
+    	// zad8
+    	System.out.println("\nZad 8 ");
+		human.setCash(100000.0);
+    	// telefon
+		human1.setCash(160000.0);
+		human1.setPhone(phone);
+		human1.getPhone().sell(human1, human, 50.0);
+    	System.out.println(human1.getPhone() == null ? "human 1 sprzedał telefon" : "human1 tanio fona nie sprzeda :)");
+		// samochód
+		car1.setPrice(8000.0);
+		human.setCar(car1);
+    	car1.sell(human, human1, car1.getPrice());
+    	car2.sell(human, human1, 3000.0); // powinien wyjść błąd
+		System.out.println(human.getCar() == null ? "human sprzedał samochód" : "human tanio auta nie sprzeda :)");
+		// zwierzęta
+		Animal pet = new Animal("ryba");
+		human.setPet(pet);
+		pet.sell(human, human1, 30.0);
+		System.out.println(human.getPet() == null ? "human sprzedał rybę" : "human tanio ryby nie sprzeda :)");
+
+
 
     }
 }

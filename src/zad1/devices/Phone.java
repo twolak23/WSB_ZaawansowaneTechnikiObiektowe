@@ -1,6 +1,8 @@
 package zad1.devices;
 
-public class Phone extends zad1.devices.Device {
+import zad1.human.*;
+
+public class Phone extends Device {
 
 
     public Phone(String producer, String mode, int yearOfProduction) {
@@ -11,6 +13,19 @@ public class Phone extends zad1.devices.Device {
     public void turnOn() {
         System.out.println("turnOn() Phone");
     }
+
+	@Override
+	public void sell(Human seller, Human buyer, Double price) {
+		if (seller.getPhone() == this && buyer.getCash() >= price) {
+			seller.setCash(seller.getCash() + price);
+			buyer.setCash(buyer.getCash() - price);
+			buyer.setPhone(this);
+			seller.setPhone(null);
+      		System.out.println("Dokonano transakcji telefonu");
+		} else {
+			System.out.println("Błąd przy transakcji telefonu");
+		}
+	}
 
 	@Override
 	public String toString () {

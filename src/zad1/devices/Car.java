@@ -1,5 +1,7 @@
 package zad1.devices;
 
+import zad1.human.*;
+
 public class Car extends Device {
 
     private Double price;
@@ -9,7 +11,20 @@ public class Car extends Device {
         this.price = price;
     }
 
-    public Car(String producer, String mode, int yearOfProduction) {
+	@Override
+	public void sell (Human seller, Human buyer, Double price) {
+		if (seller.getCar() == this && buyer.getCash() >= price) {
+			seller.setCash(seller.getCash() + price);
+			buyer.setCash(buyer.getCash() - price);
+      		buyer.setCar(this);
+      		seller.setCar(null);
+			System.out.println("Dokonano transakcji samochodu");
+		} else {
+			System.out.println("Błąd przy transakcji samochodu");
+		}
+	}
+
+	public Car(String producer, String mode, int yearOfProduction) {
         super(producer, mode, yearOfProduction);
     }
 

@@ -1,7 +1,9 @@
 package zad1.devices;
 
 
-public abstract class Device {
+import zad1.*;
+
+public abstract class Device implements Sellable {
     protected final String producer;
 	protected final String model;
 	protected int yearOfProduction;

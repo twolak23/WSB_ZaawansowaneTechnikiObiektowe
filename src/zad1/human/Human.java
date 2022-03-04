@@ -11,6 +11,8 @@ public class Human {
     private Animal pet;
     private Car car;
     private List<HumanSalaryHistory> salaryHistoryDisplayList = new ArrayList<>();
+    private Double cash;
+    private Phone phone;
 
     public Human() { }
 
@@ -74,7 +76,9 @@ public class Human {
         	else {
             	System.out.println("Sorry, nie stać cię :)");
         	}
-        }
+        } else {
+        	this.car = car;
+		}
     }
 
     public String getSalaryHistoryDisplayList() {
@@ -89,5 +93,20 @@ public class Human {
         return builder.toString();
     }
 
-    //endregion
+	public Double getCash () {
+		return cash;
+	}
+
+	public void setCash (Double cash) {
+		this.cash = cash;
+	}
+
+	public Phone getPhone () {
+		return phone;
+	}
+
+	public void setPhone (Phone phone) {
+		this.phone = phone;
+	}
+//endregion
 }

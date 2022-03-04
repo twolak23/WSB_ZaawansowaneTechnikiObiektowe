@@ -1,6 +1,9 @@
 package zad1.animal;
 
-public class Animal {
+import zad1.*;
+import zad1.human.*;
+
+public class Animal implements Sellable {
 	private final String species;
 
 	private Double weight;
@@ -49,6 +52,19 @@ public class Animal {
             }
 		}
 		this.walkCount++;
+	}
+
+	@Override
+	public void sell (Human seller, Human buyer, Double price) {
+		if (seller.getPet() == this && buyer.getCash() >= price) {
+			seller.setCash(seller.getCash() + price);
+			buyer.setCash(buyer.getCash() - price);
+			buyer.setPet(this);
+			seller.setPet(null);
+			System.out.println("Dokonano transakcji zwierzaka");
+		} else {
+			System.out.println("Błąd przy transakcji zwierzaka");
+		}
 	}
 
 	@Override
