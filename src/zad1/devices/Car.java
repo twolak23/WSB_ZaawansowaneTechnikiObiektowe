@@ -23,16 +23,42 @@ public abstract class Car extends Device {
 	public abstract void refuel ();
 
 	@Override
-	public void sell (Human seller, Human buyer, Double price) {
-		if (seller.getCar() == this && buyer.getCash() >= price) {
+	public void sell(Human seller, Human buyer, Double price) {
+		int sellerGaragePosition = -1;
+		int buyerGaragePosition = -1;
+		for (int i = 0; i < seller.getGarage().length; i++){
+			if (this.equals(seller.getGarage()[i])) {
+				sellerGaragePosition = i+1;
+				i = seller.getGarage().length;
+			}
+		}
+		for (int i = 0; i < buyer.getGarage().length; i++){
+			if (buyer.getGarage()[i] == null) {
+				buyerGaragePosition = i+1;
+				i = buyer.getGarage().length;
+			}
+		}
+		try {
+		if(sellerGaragePosition == -1) {
+			throw new Exception("Brak samochodu u sprzedającego");
+		}
+		if(buyerGaragePosition == -1) {
+			throw new Exception("Brak miejsca w garazu dla kupującego");
+		}
+
+		if (buyer.getCash() >= price) {
 			seller.setCash(seller.getCash() + price);
 			buyer.setCash(buyer.getCash() - price);
-      		buyer.setCar(this);
-      		seller.setCar(null);
+      		buyer.setCar(this, buyerGaragePosition);
+      		seller.setCar(null, sellerGaragePosition);
 			System.out.println("Dokonano transakcji samochodu");
 		} else {
-			System.out.println("Błąd przy transakcji samochodu");
+			throw new Exception("Brak gotówki u kupującego");
 		}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	public Car(String producer, String mode, int yearOfProduction) {

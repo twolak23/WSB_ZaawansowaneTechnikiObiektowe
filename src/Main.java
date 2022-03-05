@@ -12,7 +12,7 @@ public class Main {
         Phone phone = new Phone("Motorola", "ZX-23183", 2015);
         phone.turnOn();
 
-        Human human1 = new Human(3000.00);
+        Human human1 = new Human(3000.00,2);
 
         // zad1
 		System.out.println("\nZad 1");
@@ -30,8 +30,8 @@ public class Main {
 		System.out.println("\nZad2");
 
 		car.setPrice(10000.0);
-        human1.setCar(car);
-        System.out.println(human1.getCar());
+        human1.setCar(car, 1);
+        System.out.println(human1.getCar(1));
         System.out.println();
         // zad3&4
 		System.out.println("\nZad 3&4");
@@ -50,15 +50,15 @@ public class Main {
 
         Car car1 = new Diesel("BMW", "Z4", 2016, 5000.0);
 
-        Human human = new Human();
+        Human human = new Human(3);
         human.setSalary(4000.0);
-        human.setCar(car1);
+        human.setCar(car1, 2);
 
         car1.setPrice(2000.0);
-        human.setCar(car1);
+        human.setCar(car1, 2);
 
         car1.setPrice(1200000.0);
-        human.setCar(car1);
+        human.setCar(car1, 2);
 
         //zad 6
 		System.out.println("\nZad 6");
@@ -80,10 +80,10 @@ public class Main {
     	System.out.println(human1.getPhone() == null ? "human 1 sprzedał telefon" : "human1 tanio fona nie sprzeda :)");
 		// samochód
 		car1.setPrice(8000.0);
-		human.setCar(car1);
+		human.setCar(car1, 2);
     	car1.sell(human, human1, car1.getPrice());
     	car2.sell(human, human1, 3000.0); // powinien wyjść błąd
-		System.out.println(human.getCar() == null ? "human sprzedał samochód" : "human tanio auta nie sprzeda :)");
+		System.out.println(human.getCar(2) == null ? "human sprzedał samochód" : "human tanio auta nie sprzeda :)");
 		// zwierzęta
 		Animal pet = new Pet("ryba");
 		human.setPet(pet);
@@ -121,5 +121,8 @@ public class Main {
 	    electricCar1.refuel();
 	    System.out.println("Electric po tankowaniu/załadowaniu: " + electricCar1.getFuelAmount());
 
+
+	    // zad 11
+	    human1.getCar(1).sell(human1, human, 3000.0);
     }
 }
