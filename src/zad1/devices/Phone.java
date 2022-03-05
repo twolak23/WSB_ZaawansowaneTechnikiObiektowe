@@ -1,6 +1,6 @@
 package zad1.devices;
 
-import zad1.human.*;
+import zad1.creatures.*;
 
 public class Phone extends Device {
 

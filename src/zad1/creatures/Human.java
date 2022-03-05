@@ -1,7 +1,6 @@
-package zad1.human;
+package zad1.creatures;
 
 import zad1.*;
-import zad1.animal.*;
 import zad1.devices.*;
 
 import java.util.*;

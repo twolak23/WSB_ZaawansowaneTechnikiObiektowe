@@ -1,6 +1,5 @@
-import zad1.animal.*;
+import zad1.creatures.*;
 import zad1.devices.*;
-import zad1.human.*;
 
 public class Main {
 
@@ -17,7 +16,7 @@ public class Main {
         // zad1
 		System.out.println("\nZad 1");
 
-		Animal animal = new Animal("ptak");
+		Pet animal = new Pet("ptak");
         human1.setPet(animal);
         animal.feed(12.6);
         animal.feed(12.0);
@@ -85,11 +84,16 @@ public class Main {
     	car2.sell(human, human1, 3000.0); // powinien wyjść błąd
 		System.out.println(human.getCar() == null ? "human sprzedał samochód" : "human tanio auta nie sprzeda :)");
 		// zwierzęta
-		Animal pet = new Animal("ryba");
+		Animal pet = new Pet("ryba");
 		human.setPet(pet);
 		pet.sell(human, human1, 30.0);
 		System.out.println(human.getPet() == null ? "human sprzedał rybę" : "human tanio ryby nie sprzeda :)");
 
+    	// zad 9
+		System.out.println(pet.getDefaultFoodWeight());
+		System.out.println(pet.getWeight());
+		pet.feed();
+		System.out.println(pet.getWeight());
 
 
     }
