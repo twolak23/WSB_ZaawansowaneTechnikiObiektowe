@@ -2,14 +2,25 @@ package zad1.devices;
 
 import zad1.creatures.*;
 
-public class Car extends Device {
+public abstract class Car extends Device {
 
-    private Double price;
+    protected Double price;
+    protected Double fuelAmount;
+    protected Double fuelCapacity;
 
     public Car(String producer, String model, int yearOfProduction, Double price) {
         super(producer, model, yearOfProduction);
         this.price = price;
     }
+
+	public Car (String producer, String model, int yearOfProduction, Double price, Double fuelCapacity) {
+		super(producer, model, yearOfProduction);
+		this.price = price;
+		this.fuelAmount = fuelCapacity;
+		this.fuelCapacity = fuelCapacity;
+	}
+
+	public abstract void refuel ();
 
 	@Override
 	public void sell (Human seller, Human buyer, Double price) {
@@ -36,7 +47,21 @@ public class Car extends Device {
         this.price = price;
     }
 
-    @Override
+	public Double getFuelAmount () {
+		return fuelAmount;
+	}
+
+	public void setFuelAmount (Double fuelAmount) {
+		if (fuelAmount >= 0.0 && fuelAmount <= fuelCapacity) {
+      		this.fuelAmount = fuelAmount;
+		} else if(fuelAmount > fuelCapacity) {
+      		System.out.println("Więcej się nie zmieści");
+		} else {
+      		System.out.println("Więcej już tam nie będzie");
+		}
+	}
+
+	@Override
     public void turnOn() {
         System.out.println("turnOn() Car");
     }

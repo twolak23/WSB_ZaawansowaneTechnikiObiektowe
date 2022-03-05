@@ -1,11 +1,12 @@
 import zad1.creatures.*;
 import zad1.devices.*;
+import zad1.devices.cars.*;
 
 public class Main {
 
     public static void main(String[] args) {
         //zad 0
-        Car car = new Car("Mercedes-Benz", "S-Class", 2011);
+        Car car = new LPG("Mercedes-Benz", "S-Class", 2011);
         car.turnOn();
 
         Phone phone = new Phone("Motorola", "ZX-23183", 2015);
@@ -47,7 +48,7 @@ public class Main {
 		// zad 5
 		System.out.println("\nZad 5");
 
-        Car car1 = new Car("BMW", "Z4", 2016, 5000.0);
+        Car car1 = new Diesel("BMW", "Z4", 2016, 5000.0);
 
         Human human = new Human();
         human.setSalary(4000.0);
@@ -62,7 +63,7 @@ public class Main {
         //zad 6
 		System.out.println("\nZad 6");
 
-		Car car2 = new Car("BMW", "Z4", 2016, 5000.0);
+		Car car2 = new Diesel("BMW", "Z4", 2016, 5000.0);
         System.out.println("car1 == car2 (equals): " + car1.equals(car2));
         System.out.println("car1 == car2 (hashCode)" + (car1.hashCode() == car2.hashCode()));
         System.out.println(car1);
@@ -95,6 +96,30 @@ public class Main {
 		pet.feed();
 		System.out.println(pet.getWeight());
 
+		//zad 10
+		LPG lpgCar1 = new LPG("Volksvagen", "Passat", 2012, 3000.0, 50.0);
+		lpgCar1.setFuelAmount(120.0);
+	    lpgCar1.setFuelAmount(25.6);
+        System.out.println("LPG przed tankowaniem: " + lpgCar1.getFuelAmount());
+	    lpgCar1.refuel();
+	    System.out.println("LPG po tankowaniu: " + lpgCar1.getFuelAmount());
+
+
+		Diesel dieselCar1 = new Diesel("Ford", "Mustang", 2016, 9500.0, 45.0);
+	    dieselCar1.setFuelAmount(120.0);
+	    dieselCar1.setFuelAmount(20.0);
+	    System.out.println("Diesel przed tankowaniem: " + dieselCar1.getFuelAmount());
+	    dieselCar1.refuel();
+	    System.out.println("Diesel po tankowaniu: " + dieselCar1.getFuelAmount());
+
+
+	    // w elektrycznych pojemność jest w kWh
+	    Electric electricCar1 = new Electric("Tesla", "", 2020, 14000.0, 80.0);
+	    electricCar1.setFuelAmount(120.0);
+	    electricCar1.setFuelAmount(50.0);
+	    System.out.println("Electric przed tankowaniem/załadowaniem: " + electricCar1.getFuelAmount());
+	    electricCar1.refuel();
+	    System.out.println("Electric po tankowaniu/załadowaniu: " + electricCar1.getFuelAmount());
 
     }
 }

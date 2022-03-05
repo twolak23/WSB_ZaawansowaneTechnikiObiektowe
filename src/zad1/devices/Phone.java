@@ -2,8 +2,13 @@ package zad1.devices;
 
 import zad1.creatures.*;
 
+import java.util.*;
+
 public class Phone extends Device {
 
+	static final String DEFAULT_APP_ADDRESS = "https://www.google.com/";
+	static final String DEFAULT_APP_PROTOCOL = "test_protocol";
+	static final String DEFAULT_APP_VERSION = "1.0";
 
     public Phone(String producer, String mode, int yearOfProduction) {
         super(producer, mode, yearOfProduction);
@@ -30,5 +35,22 @@ public class Phone extends Device {
 	@Override
 	public String toString () {
 		return super.toString();
+	}
+
+	public void installAnApp(String appName) {
+    	System.out.println("Zainstalowano aplikację '" + appName + "' w wersji " + DEFAULT_APP_VERSION + " z adresu " + DEFAULT_APP_ADDRESS + ".");
+	}
+
+	public void installAnApp(String appName, String version) {
+    	System.out.println("Zainstalowano aplikację '" + appName + "' w wersji " + version + " z adresu " + DEFAULT_APP_ADDRESS + ".");
+	}
+	public void installAnApp(String appName, String version, String address) {
+		System.out.println("Zainstalowano aplikację '" + appName + "' w wersji " + version + " z adresu" + address + ".");
+	}
+	public void installAnApp(List<String> appNameList) {
+    	appNameList.forEach(this::installAnApp);
+	}
+	public void installAnApp(URL url) {
+    	this.installAnApp(url.getAppName(), url.getVersion(), url.getAppAddress());
 	}
 }
