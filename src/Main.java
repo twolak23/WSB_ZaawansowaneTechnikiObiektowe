@@ -91,12 +91,14 @@ public class Main {
 		System.out.println(human.getPet() == null ? "human sprzedał rybę" : "human tanio ryby nie sprzeda :)");
 
     	// zad 9
+	    System.out.println("\nZad 9 ");
 		System.out.println(pet.getDefaultFoodWeight());
 		System.out.println(pet.getWeight());
 		pet.feed();
 		System.out.println(pet.getWeight());
 
 		//zad 10
+	    System.out.println("\nZad 10 ");
 		LPG lpgCar1 = new LPG("Volksvagen", "Passat", 2012, 3000.0, 50.0);
 		lpgCar1.setFuelAmount(120.0);
 	    lpgCar1.setFuelAmount(25.6);
@@ -123,6 +125,16 @@ public class Main {
 
 
 	    // zad 11
+	    System.out.println("\nZad 11 ");
 	    human1.getCar(1).sell(human1, human, 3000.0);
+
+	    // zad 12
+	    System.out.println("\nZad 12 ");
+	    Car humanCar1 = human.getCar(1);
+        System.out.println(humanCar1.getCurrentOwner());
+	    System.out.println(humanCar1.isCarSold(human1, human) ? "human1 sprzedał kiedyś samochód dla human" : "Nic takiego nie było");
+	    Car newCar = new Diesel("Fiat" , "Punto", 1998, 1500.0,  20.0);
+	    System.out.printf("%s %s: " + (newCar.hasAnyOwner() ? "nie " : "") + "miał jakiegoś właściciela \n", newCar.getProducer(), newCar.getModel());
+        System.out.printf("Ilość transakcji z udziałem %s %s: %d", humanCar1.getProducer(), humanCar1.getModel(), humanCar1.transactionsCount());
     }
 }

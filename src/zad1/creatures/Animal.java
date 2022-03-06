@@ -1,7 +1,5 @@
 package zad1.creatures;
 
-import zad1.*;
-
 public abstract class Animal implements Sellable, Feedable {
 	private final String species;
 

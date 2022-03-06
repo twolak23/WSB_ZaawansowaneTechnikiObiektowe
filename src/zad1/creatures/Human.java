@@ -98,6 +98,9 @@ public class Human {
 		    System.out.println("Nie ma takiego miejsca w garażu");
 	    } else {
 		    this.garage[garagePosition - 1] = car;
+		    if (car != null) {
+                car.getOwnerList().add(this);
+		    }
 	    }
     }
     public String getSalaryHistoryDisplayList() {
@@ -113,6 +116,7 @@ public class Human {
     }
 
 	public Double getCash () {
+    	this.salaryHistoryDisplayList.add(new HumanSalaryHistory(new Date(), cash));
 		return cash;
 	}
 

@@ -2,11 +2,15 @@ package zad1.devices;
 
 import zad1.creatures.*;
 
+import java.util.*;
+
 public abstract class Car extends Device {
 
     protected Double price;
     protected Double fuelAmount;
     protected Double fuelCapacity;
+    protected List<Human> ownerList = new ArrayList<>();
+
 
     public Car(String producer, String model, int yearOfProduction, Double price) {
         super(producer, model, yearOfProduction);
@@ -47,10 +51,14 @@ public abstract class Car extends Device {
 		}
 
 		if (buyer.getCash() >= price) {
+			if(!seller.equals(this.getOwnerList().get(this.getOwnerList().size()-1))) {
+				throw new Exception("Sprzedawca sprzedaje kradziony samochód!");
+			}
 			seller.setCash(seller.getCash() + price);
 			buyer.setCash(buyer.getCash() - price);
       		buyer.setCar(this, buyerGaragePosition);
       		seller.setCar(null, sellerGaragePosition);
+      		this.ownerList.add(buyer);
 			System.out.println("Dokonano transakcji samochodu");
 		} else {
 			throw new Exception("Brak gotówki u kupującego");
@@ -61,6 +69,21 @@ public abstract class Car extends Device {
 
 	}
 
+	public boolean hasAnyOwner() {
+		return !this.ownerList.isEmpty();
+	}
+
+	public boolean isCarSold(Human seller, Human buyer) {
+		return (ownerList.indexOf(seller) == ownerList.indexOf(buyer) - 1) && (ownerList.indexOf(buyer) > 0);
+	}
+
+	public int transactionsCount() {
+		return ownerList.size() - 1;
+	}
+
+	public Human getCurrentOwner() {
+		return ownerList.get(ownerList.size() - 1);
+	}
 	public Car(String producer, String mode, int yearOfProduction) {
         super(producer, mode, yearOfProduction);
     }
@@ -85,6 +108,14 @@ public abstract class Car extends Device {
 		} else {
       		System.out.println("Więcej już tam nie będzie");
 		}
+	}
+
+	public List<Human> getOwnerList () {
+		return ownerList;
+	}
+
+	public void setOwnerList (List<Human> ownerList) {
+		this.ownerList = ownerList;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package zad1.devices;
 
 
-import zad1.*;
+import zad1.creatures.*;
 
 public abstract class Device implements Sellable {
     protected final String producer;
