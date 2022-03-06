@@ -128,8 +128,12 @@ public class Human {
 		return phone;
 	}
 
-	public void setPhone (Phone phone) {
-		this.phone = phone;
+	public void setPhone(Phone phone) {
+    	if(phone != null) {
+			phone.setOwner(this);
+		}
+    	this.phone = phone;
+
 	}
 
 	public Car[] getGarage () {

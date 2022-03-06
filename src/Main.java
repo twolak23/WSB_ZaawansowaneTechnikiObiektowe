@@ -1,3 +1,4 @@
+import zad1.*;
 import zad1.creatures.*;
 import zad1.devices.*;
 import zad1.devices.cars.*;
@@ -136,5 +137,26 @@ public class Main {
 	    Car newCar = new Diesel("Fiat" , "Punto", 1998, 1500.0,  20.0);
 	    System.out.printf("%s %s: " + (newCar.hasAnyOwner() ? "nie " : "") + "miał jakiegoś właściciela \n", newCar.getProducer(), newCar.getModel());
         System.out.printf("Ilość transakcji z udziałem %s %s: %d", humanCar1.getProducer(), humanCar1.getModel(), humanCar1.transactionsCount());
+
+		//zad 13
+	    System.out.println("\nZad 13 ");
+	    Application twitter = new Application("Twitter", "1.0", 50.0);
+	    Application facebook = new Application("Facebook", "3.4.3", 60.0);
+	    Application google = new Application("Google", "2.4.5", 0.0);
+	    Application spotify = new Application("Spotify", "1.4", 0.0);
+	    human.setPhone(phone);
+	    phone.installAnApp(twitter);
+	    System.out.println((phone.isAppInstalled(twitter) ? "Telefon zawiera apkę " : "Telefon nie zawiera apki ") + twitter.getName());
+	    System.out.println((phone.isAppInstalled(twitter) ? "Telefon zawiera apkę " : "Telefon nie zawiera apki ") + twitter.getName() + "(wg nazwy)");
+
+	    System.out.println((phone.isAppInstalled(facebook) ? "Telefon zawiera apkę " : "Telefon nie zawiera apki ") + facebook.getName());
+	    System.out.println((phone.isAppInstalled(facebook) ? "Telefon zawiera apkę " : "Telefon nie zawiera apki ") + facebook.getName() + "(wg nazwy)");
+
+		phone.installAnApp(spotify);
+		phone.printFreeApps();
+	    System.out.println("łączna wartość zainstalowanych aplikacji: " + phone.getInstalledAppsTotalPrice());
+	    phone.printInstalledAppsNamesAlphabetically();
+		phone.printInstalledAppsFromCheapest();
+
     }
 }
